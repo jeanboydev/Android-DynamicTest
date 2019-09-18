@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.jeanboy.app.dynamictest.R;
+import com.jeanboy.app.dynamictest.utils.BugUtil;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +37,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void toUpdate(View view) {
-        tv_display.setText("这是更新的内容！！");
+        tv_display.setText(BugUtil.getDisplayString());
     }
 }
