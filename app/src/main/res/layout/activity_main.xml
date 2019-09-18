@@ -25,4 +25,11 @@
         android:text="Hello World!"
         android:textAlignment="center" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="增加了一个TextView!"
+        android:background="@android:color/holo_blue_bright"
+        android:textAlignment="center" />
+
 </LinearLayout>

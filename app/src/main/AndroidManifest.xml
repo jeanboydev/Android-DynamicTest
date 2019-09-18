@@ -3,9 +3,6 @@
     package="com.jeanboy.app.dynamictest">
 
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <application
         android:name=".base.MainApplication"
         android:allowBackup="true"
@@ -22,5 +19,13 @@
             </intent-filter>
         </activity>
     </application>
+
+    <meta-data
+        android:name="TINKER_ID"
+        android:value="tinker_id_6235657" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>
