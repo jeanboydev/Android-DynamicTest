@@ -8,10 +8,18 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.jeanboy.app.dynamictest.R;
+import com.jeanboy.app.dynamictest.patch.AndFixPatchManager;
+import com.jeanboy.app.dynamictest.utils.BugUtil;
+
+import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView tv_display;
+
+    private static final String FILE_STUFFIX = ".apatch";
+    // /storage/emulated/0/Android/data/com.jeanboy.app.dynamictest/cache/patch/
+    private String patchDir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,21 +29,31 @@ public class MainActivity extends AppCompatActivity {
         tv_display = findViewById(R.id.tv_display);
 
 
-        ClassLoader classLoader = getClassLoader();
+//        ClassLoader classLoader = getClassLoader();
+//
+//        if (classLoader != null) {
+//            Log.e("======", "classloader:" + classLoader.toString());
+//            while (classLoader.getParent() != null) {
+//                classLoader = classLoader.getParent();
+//                Log.e("======", "classloader:" + classLoader.toString());
+//            }
+//        }
 
-        if (classLoader != null) {
-            Log.e("======", "classloader:" + classLoader.toString());
-            while (classLoader.getParent() != null) {
-                classLoader = classLoader.getParent();
-                Log.e("======", "classloader:" + classLoader.toString());
-            }
+        patchDir = getExternalCacheDir().getAbsolutePath() + "/patch/";
+        Log.e("=====",patchDir);
+        File file = new File(patchDir);
+        if (!file.exists()) {
+            file.mkdir();
         }
     }
 
     public void toHotFix(View view) {
+        String path = patchDir.concat("test").concat(FILE_STUFFIX);
+        Log.e("===path==",path);
+        AndFixPatchManager.getInstance().addPatch(path);
     }
 
     public void toUpdate(View view) {
-        tv_display.setText("这是更新的内容！！");
+        tv_display.setText(BugUtil.getDisplayString());
     }
 }
