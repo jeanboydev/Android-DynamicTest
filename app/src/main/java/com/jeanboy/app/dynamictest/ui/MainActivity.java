@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.jeanboy.app.dynamictest.R;
+import com.jeanboy.app.dynamictest.utils.BugUtil;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,21 +22,21 @@ public class MainActivity extends AppCompatActivity {
         tv_display = findViewById(R.id.tv_display);
 
 
-        ClassLoader classLoader = getClassLoader();
-
-        if (classLoader != null) {
-            Log.e("======", "classloader:" + classLoader.toString());
-            while (classLoader.getParent() != null) {
-                classLoader = classLoader.getParent();
-                Log.e("======", "classloader:" + classLoader.toString());
-            }
-        }
+//        ClassLoader classLoader = getClassLoader();
+//
+//        if (classLoader != null) {
+//            Log.e("======", "classloader:" + classLoader.toString());
+//            while (classLoader.getParent() != null) {
+//                classLoader = classLoader.getParent();
+//                Log.e("======", "classloader:" + classLoader.toString());
+//            }
+//        }
     }
 
     public void toHotFix(View view) {
     }
 
     public void toUpdate(View view) {
-        tv_display.setText("这是更新的内容！！");
+        tv_display.setText(BugUtil.getDisplayString());
     }
 }
